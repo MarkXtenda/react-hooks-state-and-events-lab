@@ -1,11 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Item({ name, category }) {
+  const [incart, setinCart] = useState("")
+
+  function handleCart(event) {
+    console.log(event.target.parentElement)
+    if (event.target.parentElement.className === incart) {
+      setinCart("in-cart")
+    }
+  }
+
   return (
-    <li className="">
+    <li  className={incart}>
       <span>{name}</span>
       <span className="category">{category}</span>
-      <button className="add">Add to Cart</button>
+      <button onClick={handleCart} className="add">Add to Cart</button>
     </li>
   );
 }
